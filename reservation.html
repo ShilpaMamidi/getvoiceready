@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservation</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<style>
+#s1,#s2,#s3,#s4{
+
+ border-radius: 15px;
+ background-color:powderblue;
+  padding: 5px;
+  width: 70px;
+  height: 50px;
+}
+.button{
+         background-color:lightskyblue ;  /* #4CAF50 */
+    border: 1px solid lightskyblue;
+    color: black;
+    padding: 15px 32px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    }
+ .button:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+</style>
+</head>
+
+<body>
+<script>
+var t1=false,t2=false,t3=false,t4=false;
+
+function rname()
+{
+	
+	document.getElementById("my").disabled = true;
+	var x = document.getElementById("res").value;
+	
+	if(x=="" || typeof(x) == "undefined")
+		{
+		  
+		  document.getElementById('rname').innerHTML ="please select a restaurent";
+		  document.getElementById("Register").disabled = true;
+		}
+	else{
+		
+		document.getElementById('rname').innerHTML ="";
+		 document.getElementById("Register").disabled = false;
+		 t1=true; 
+		}
+}
+function mobvalid()
+{
+	
+	var z5=/^[0-9]*$/;
+	var mob = document.getElementById('mobile').value;
+	
+	if(typeof(mob) == "undefined" || mob =="")
+		{
+		document.getElementById('spmob').innerHTML ="please enter your number";
+		document.getElementById("Register").disabled = true;
+		}
+	else if(!z5.test(mob))
+		{
+		document.getElementById('spmob').innerHTML ="please enter valid number";
+		document.getElementById("Register").disabled = true;
+		}
+	else{
+		document.getElementById('spmob').innerHTML ="";
+		document.getElementById("Register").disabled = false;
+		t2=true;
+		}
+
+	}
+
+function buttonclick(id)
+{
+	
+	
+	var x = document.getElementById(id).value;
+	
+	document.getElementById(id).style.backgroundColor ="green";
+	document.getElementById(id).style.color ="white";  	
+}
+var i=0;
+$(document).ready(function(){
+	  $("#s1").click(function(){
+		  var text = $(this).val();
+	    $("#s2").toggle();
+	    $("#s3").toggle();
+	    $("#s4").toggle();
+	    if(i==0)
+		    {
+	    $("#s1").css("background-color","green");
+           i++;
+           alert("you have selected "+text);
+		  }
+	    else
+			 {
+			 $("#s1").css("background-color","lightskyblue");
+	           i--;
+	           alert("you have deselected "+text);
+			 }
+		 
+	  });
+	});
+var j=0;
+$(document).ready(function(){
+	  $("#s2").click(function(){
+		  var text = $(this).val();
+	    $("#s1").toggle();
+	    $("#s3").toggle();
+	    $("#s4").toggle();
+	    if(j==0)
+		    {
+	    $("#s2").css("background-color","green");
+         j++;
+         alert("you have selected "+text);
+		  }
+	    else
+			 {
+			 $("#s2").css("background-color","lightskyblue");
+	           j--;
+	           alert("you have deselected "+text);
+			 }
+		 
+	  });
+	});
+var k=0;
+$(document).ready(function(){
+	  $("#s3").click(function(){
+		  var text = $(this).val();
+	    $("#s1").toggle();
+	    $("#s2").toggle();
+	    $("#s4").toggle();
+	    if(k==0)
+		    {
+	    $("#s3").css("background-color","green");
+       k++;
+       alert("you have selected "+text);
+		  }
+	    else
+			 {
+			 $("#s3").css("background-color","lightskyblue");
+	           k--;
+	           alert("you have deselected "+text);
+			 }
+		 
+	  });
+	});
+var l=0;
+$(document).ready(function(){
+	  $("#s4").click(function(){
+        var text = $(this).val(); 
+	    $("#s1").toggle();
+	    $("#s2").toggle();
+	    $("#s3").toggle();
+	    if(l==0)
+		    {
+	    $("#s4").css("background-color","green");
+       l++;
+       alert("you have selected "+text);
+		  }
+	    else
+			 {
+			 $("#s4").css("background-color","lightskyblue");
+	           l--;
+	           alert("you have deselected "+text);
+			 }
+		 
+		 
+	  });
+	});
+function jsf()
+{
+	if(t1 && t2)
+  {
+	//alert("hello");
+	document.getElementById("myFieldset").disabled = true;
+	document.getElementById("my").disabled = false;
+  }
+	
+}
+function formsubmit()
+{
+	
+		
+		 //document.getElementById("zform").submit();
+		
+}
+</script>
+<center>
+ <form  name="Rform" action="#" method="post"> 
+<fieldset id="myFieldset" style="border: 1">
+ <h2 style="font-size:20px; font-weight:bold; color:blue;">Restaurent Reservation</h2><br>
+ <label style="font-size:20px; font-weight:bold; color:blue;">Restaurent Name:</label>
+ <input list="res_names" name= "res" id="res"   placeholder="please select a restaurent" size="30" onblur="rname()"> <span id="rname" style="color:red; font-size:20px; font-weight:bold; font-style: oblique;"></span>
+ <datalist id="res_names">
+ <option value="A&W Restaurants">
+ <option value="StarBucks">
+ <option value="Applebee's">
+ <option value="Arby's">
+ </datalist>
+ <br>
+ <br>
+ 
+ <label style="font-size:20px; font-weight:bold; color:blue;">Available Slots:</label><br>
+ <input type="button" id ="s1" style="display:inline-block" value="12:00 " onclick="buttonclick(this.id)">  
+ <input type="button" id ="s2" style="display:inline-block" value="13:00 " onclick="buttonclick(this.id)">
+ <input type="button" id ="s3" style="display:inline-block" value="20:00 " onclick="buttonclick(this.id)">
+ <input type="button" id ="s4" style="display:inline-block" value="21:00 " onclick="buttonclick(this.id)">
+  <br><br>
+  <label style="font-size:20px; font-weight:bold; color:blue;">Number of Adults:</label>
+  <input type="number" id="no_of_adults" min="1" max="20" value="1" required><br><br>
+  <label style="font-size:20px; font-weight:bold; color:blue;">Number of Kids:</label>
+  <input type="number" id="no_of_kids" min="0" max="20" value="0"><br><br>
+  <label style="font-size:20px; font-weight:bold; color:blue;">Phone Number:</label>
+  <input type="text" value="+91" maxlength="3" readonly="" size=3><input type="text" name="mobile" id="mobile"  onkeyup="mobvalid()"> <span id="spmob" style="color:red; font-size:20px; font-weight:bold; font-style: oblique;"></span>
+ 
+ <br>
+ <br>
+<input type="button" value="confirm Reservation" name="Register" id="Register" onclick="jsf()" class="button" style="border: 1px solid black;border-radius:20px ">
+</fieldset> 
+<br>
+<br>
+<br>
+<fieldset id="my" style="border: 2">
+<label style="font-size:20px; font-weight:bold; color:blue;"> Please enter OTP:</label>
+<input type="text" size="4" name="otp" id="otp" >
+<br>
+<br>
+
+<input type="submit" onclick="formsubmit" name="Book Restaurent" value="Book Restaurent">
+</fieldset>
+</form> 
+</center>
+
+</body>
+</html>
