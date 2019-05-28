@@ -19,6 +19,7 @@ body {
 h1,h2,h3,h4,h5,h6 {
   color:#152732;
   font-weight: normal;
+  font-family: Arial;
   line-height: 1.3;
   margin:0.5rem 0;  
 }
